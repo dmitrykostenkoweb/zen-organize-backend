@@ -1,0 +1,21 @@
+{
+  "name": "zo-backend",
+  "version": "0.0.0",
+  "description": "Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git remote add origin https://github.com/dmitrykostenkoweb/Zen-Organize.git"
+  },
+  "keywords": [
+    "zen"
+  ],
+  "author": "D.Kostenko",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
