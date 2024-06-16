@@ -1,6 +1,6 @@
-import pool from "../db";
-import { Area } from "../models/areaModel";
 import { QueryResult } from "pg";
+import pool from "@/db";
+import { Area } from "@/models/areaModel";
 
 export const getAllAreas = async (): Promise<Area[]> => {
   const result: QueryResult<Area> = await pool.query("SELECT * FROM Areas");

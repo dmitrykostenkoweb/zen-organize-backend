@@ -1,3 +1,4 @@
+import "module-alias/register";
 import express from "express";
 import { Express } from "express";
 import areaRoutes from "./routes/areaRoutes";
