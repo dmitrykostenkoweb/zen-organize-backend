@@ -1,40 +1,50 @@
 import { Request, Response } from 'express';
-import { getAreas, addArea, updateArea, deleteArea } from '../services/areaService';
+import { getAllAreas, getAreaById, createArea, updateArea, deleteArea } from '../services/areaService';
 
-export const getAllAreas = async (req: Request, res: Response): Promise<void> => {
+export const getAllAreasController = async (req: Request, res: Response): Promise<void> => {
     try {
-        const areas = await getAreas();
+        const areas = await getAllAreas();
         res.json(areas);
     } catch (err) {
         handleDbError(err, res);
     }
 };
 
-export const createArea = async (req: Request, res: Response): Promise<void> => {
-    const { name, description, imageURL } = req.body;
+export const getAreaByIdController = async (req: Request, res: Response): Promise<void> => {
+    const { id } = req.params;
     try {
-        const newArea = await addArea(name, description, imageURL);
+        const area = await getAreaById(Number(id));
+        res.json(area);
+    } catch (err) {
+        handleDbError(err, res);
+    }
+};
+
+export const createAreaController = async (req: Request, res: Response): Promise<void> => {
+    const { name, description, imageUrl } = req.body;
+    try {
+        const newArea = await createArea(name, description, imageUrl);
         res.json(newArea);
     } catch (err) {
         handleDbError(err, res);
     }
 };
 
-export const modifyArea = async (req: Request, res: Response): Promise<void> => {
+export const updateAreaController = async (req: Request, res: Response): Promise<void> => {
     const { id } = req.params;
-    const { name, description, imageURL } = req.body;
+    const { name, description, imageUrl } = req.body;
     try {
-        const updatedArea = await updateArea(id, name, description, imageURL);
+        const updatedArea = await updateArea(Number(id), name, description, imageUrl);
         res.json(updatedArea);
     } catch (err) {
         handleDbError(err, res);
     }
 };
 
-export const removeArea = async (req: Request, res: Response): Promise<void> => {
+export const deleteAreaController = async (req: Request, res: Response): Promise<void> => {
     const { id } = req.params;
     try {
-        await deleteArea(id);
+        await deleteArea(Number(id));
         res.json({ message: 'Area deleted successfully' });
     } catch (err) {
         handleDbError(err, res);
