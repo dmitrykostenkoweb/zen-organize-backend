@@ -1,6 +1,6 @@
 export interface Area {
-    areaId: number;
-    name: string;
-    description?: string;
-    imageUrl?: string;
+  areaId: number;
+  name: string;
+  description?: string;
+  imageUrl?: string;
 }

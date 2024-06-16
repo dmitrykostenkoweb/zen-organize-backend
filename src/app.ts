@@ -1,15 +1,13 @@
-import express from 'express';
-import areaRoutes from './routes/areaRoutes';
+import express from "express";
+import { Express } from "express";
+import areaRoutes from "./routes/areaRoutes";
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+const app: Express = express();
+const PORT: string | 3000 = process.env.PORT || 3000;
 
-app.use(express.json()); // middleware do parsowania JSON
-
-// Użycie tras dla Areas
+app.use(express.json());
 app.use(areaRoutes);
 
-// Inicjalizacja serwera
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(PORT, (): void => {
+  console.log(`Server is running on port ${PORT}`);
 });
